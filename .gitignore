@@ -39,3 +39,4 @@ staticfiles/
 # Ignore pipenv files
 Pipfile
 Pipfile.lock
+TODO.py
