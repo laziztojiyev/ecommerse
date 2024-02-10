@@ -1,7 +1,8 @@
 from random import randint
 
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect, render
-from django.views.generic import FormView, UpdateView
+from django.views.generic import FormView, UpdateView, TemplateView
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.views import LoginView
 
@@ -28,4 +29,8 @@ class RegisterView(FormView):
 class SettingsView(UpdateView):
     model = CustomUser
     form_class = UserSettingsForm
+    template_name = 'apps/user_settings.html'
+
+
+class ProfileLoginView(TemplateView, LoginRequiredMixin):
     template_name = 'apps/user_settings.html'
