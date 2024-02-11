@@ -44,11 +44,11 @@ class AdminProxy(CustomUser):
 
 
 class ConfiguredFields(BaseUserAdmin):
-    list_display = ['username', 'first_name', 'last_name', 'is_staff']
+    list_display = ['username', 'first_name', 'last_name', 'is_staff', 'phone_number', 'about_me']
 
     fieldsets = (
         (None, {'fields': ('username', 'password')}),
-        (_('Personal info'), {'fields': ('first_name', 'last_name', 'email', 'image', "type")}),
+        (_('Personal info'), {'fields': ('first_name', 'last_name', 'email', 'image', "type", 'phone_number', 'about_me')}),
         (_('Permissions'), {
             'fields': ('is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions'),
         }),
