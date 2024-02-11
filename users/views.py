@@ -17,7 +17,7 @@ from django.urls import reverse_lazy
 
 class RegisterView(FormView):
     form_class = UserRegistrationForm
-    template_name = 'apps/register.html'
+    template_name = 'auth/register.html'
     success_url = reverse_lazy('login')
 
     def form_valid(self, form):
@@ -29,8 +29,8 @@ class RegisterView(FormView):
 class SettingsView(UpdateView):
     model = CustomUser
     form_class = UserSettingsForm
-    template_name = 'apps/user_settings.html'
+    template_name = 'auth/user_settings.html'
 
 
 class ProfileLoginView(TemplateView, LoginRequiredMixin):
-    template_name = 'apps/user_settings.html'
+    template_name = 'auth/user_settings.html'

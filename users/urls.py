@@ -13,7 +13,7 @@ def sending_email_view(request, email):
 urlpatterns = [
     path('sent/<email>/', sending_email_view, name='sending'),
     path('register/', RegisterView.as_view(), name='register'),
-    path('login/', LoginView.as_view(template_name='apps/login.html', next_page='product_list'), name='login'),
+    path('login/', LoginView.as_view(template_name='auth/login.html', next_page='product_list'), name='login'),
     path('settings/', ProfileLoginView.as_view(), name='profile'),
 ]
 
