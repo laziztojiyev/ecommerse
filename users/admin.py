@@ -48,7 +48,8 @@ class ConfiguredFields(BaseUserAdmin):
 
     fieldsets = (
         (None, {'fields': ('username', 'password')}),
-        (_('Personal info'), {'fields': ('first_name', 'last_name', 'email', 'image', "type", 'phone_number', 'about_me')}),
+        (_('Personal info'),
+         {'fields': ('first_name', 'last_name', 'email', 'image', "type", 'phone_number', 'about_me')}),
         (_('Permissions'), {
             'fields': ('is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions'),
         }),
@@ -57,7 +58,7 @@ class ConfiguredFields(BaseUserAdmin):
     add_fieldsets = (
         (None, {
             'classes': ('wide   ',),
-            'fields': ('username', 'password1', 'password2', 'type'),
+            'fields': ('username', 'password1', 'password2', 'type', 'image', 'about_me', 'phone_number'),
         }),
     )
 

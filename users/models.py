@@ -13,7 +13,7 @@ class CustomUser(AbstractUser):
         OPERATOR = 'operator', 'operator'
         MENEGER = 'meneger', 'Menedjer'
     type = CharField(max_length=25, choices=Type.choices, default=Type.USERS)
-    image = ImageField(upload_to='profile_image', null=True, blank=True)
+    image = ImageField(upload_to='profile_image', default='1.jpg', null=True, blank=True)
     about_me = RichTextField()
     phone_number = CharField(max_length=25)
 
