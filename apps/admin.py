@@ -1,8 +1,9 @@
-from django import forms
 from django.contrib import admin
+from django.contrib.admin import StackedInline
 from django.utils.safestring import mark_safe
 
-from apps.models import Category, Product, Wishlist, Cart
+from apps.forms import ProductModelForm
+from apps.models import Category, Product, Wishlist, Cart, ProductImage
 
 
 # Register your models here.
@@ -11,14 +12,16 @@ class CategoryAdmin(admin.ModelAdmin):
     pass
 
 
-class ProductModelForm(forms.ModelForm):
-    class Meta:
-        model = Product
-        exclude = ()
+class ProductImagesStackedInline(StackedInline):
+    model = ProductImage
+    min_num = 1
+    extra = 0
+    fields = ['image', ]
 
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
+    inlines = (ProductImagesStackedInline, )
     list_display = ['name', 'quantity', 'image_show', 'category']
     form = ProductModelForm
     list_per_page = 10
@@ -33,8 +36,8 @@ class ProductAdmin(admin.ModelAdmin):
         return qs.filter(owner=request.user)
 
     def image_show(self, obj):
-        if obj.image:
-            return mark_safe("<img src='{}' width='100' height='100' />".format(obj.image.url))
+        if obj.images.first():
+            return mark_safe("<img src='{}' width='100' height='100' />".format(obj.images.first().image.url))
 
         return 'None'
 

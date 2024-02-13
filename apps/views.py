@@ -3,13 +3,12 @@ from audioop import reverse
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.shortcuts import render
 from django.views import View
-from django.views.generic import ListView, DetailView, CreateView, DeleteView, FormView
+from django.views.generic import ListView, DetailView, CreateView, DeleteView, FormView, TemplateView
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
 
 from apps.forms import OrderModelForm
-from apps.models import Product, Wishlist
-from apps.tasks import add_datas
+from apps.models import Product, Wishlist, ProductImage
 
 
 # Create your views here.
@@ -35,6 +34,12 @@ class ProductListView(ListView):
             product_list_p = paginator.page(paginator.num_pages)
         contex['product_list'] = product_list_p
         return contex
+
+
+class ProductImageView(TemplateView):
+    model = ProductImage
+    template_name = 'apps/product_detail.html'
+    context_object_name = 'product_image'
 
 
 class ProductDetailView(DetailView):
@@ -65,4 +70,3 @@ class OrderView(FormView):
 
     def get_success_url(self):
         return reverse('product_detail', kwargs={'pk': self.request.POST.get('product_id')})
-
