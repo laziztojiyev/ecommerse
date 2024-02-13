@@ -25,15 +25,13 @@ class ProfileLoginView(TemplateView, LoginRequiredMixin):
 
 class UserUpdateView(UpdateView):
     model = CustomUser
-    fields = ['first_name', 'last_name', 'phone_number', 'about_me', 'email', 'password']
+    fields = ['first_name', 'last_name', 'phone_number', 'about_me', 'email']
     template_name = 'auth/user_settings.html'
     success_url = reverse_lazy('login')
 
     def get_object(self, queryset=None):
         return self.request.user
 
-    def form_valid(self, form):
-        if form.is_valid():
-            form.save()
-        return HttpResponseRedirect(self.get_success_url())  # Redirect to success URL
+    def form_invalid(self, form):
+        return super().form_invalid(form)
 

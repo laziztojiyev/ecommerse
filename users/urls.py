@@ -15,6 +15,6 @@ urlpatterns = [
     path('register/', RegisterView.as_view(), name='register'),
     path('login/', LoginView.as_view(template_name='auth/login.html', next_page='product_list'), name='login'),
     path('settings/', ProfileLoginView.as_view(), name='profile'),
-    path('settings/<int:pk>/update/', UserUpdateView.as_view(), name='user_update'),
+    path('settings/update/', UserUpdateView.as_view(), name='user_update'),
 ]
 
