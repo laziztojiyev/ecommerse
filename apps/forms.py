@@ -1,8 +1,8 @@
-from django.contrib.auth.hashers import make_password
-from django.core.exceptions import ValidationError
-from django.forms import ModelForm, Form, CharField
-from django import forms
 import re
+
+from django import forms
+from django.core.exceptions import ValidationError
+from django.forms import ModelForm
 
 from apps.models import Order, Product
 from users.models import CustomUser

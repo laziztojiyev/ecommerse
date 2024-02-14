@@ -1,9 +1,11 @@
+from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import HttpResponseRedirect
+from django.contrib.auth.views import PasswordChangeView
 from django.urls import reverse_lazy
 from django.views.generic import FormView, UpdateView, TemplateView
 
 from apps.forms import UserRegistrationForm
+from apps.tasks import add_datas
 from users.models import CustomUser
 from users.tasks import sending_email
 
@@ -32,6 +34,12 @@ class UserUpdateView(UpdateView):
     def get_object(self, queryset=None):
         return self.request.user
 
+
+class ChangePasswordView(PasswordChangeView):
+    form_class = PasswordChangeForm
+    template_name = 'auth/user_settings.html'
+    success_url = reverse_lazy('login')
+
     def form_invalid(self, form):
         return super().form_invalid(form)
-
+    add_datas()
