@@ -5,7 +5,6 @@ from django.urls import reverse_lazy
 from django.views.generic import FormView, UpdateView, TemplateView
 
 from apps.forms import UserRegistrationForm
-from apps.tasks import add_datas
 from users.models import CustomUser
 from users.tasks import sending_email
 
@@ -42,4 +41,3 @@ class ChangePasswordView(PasswordChangeView):
 
     def form_invalid(self, form):
         return super().form_invalid(form)
-    add_datas()
