@@ -420,8 +420,8 @@
                                 <div class="overflow-hidden">
                                     <div class="position-relative rounded-top overflow-hidden"><a class="d-block"
                                                                                                   href="{% url 'product_detail' pk=product.pk %}"><img
-                                            {% if product.image %}
-                                            class="img-fluid rounded-top" src="{{ product.image.url }}"
+                                            {% if product.images.first.image.url %}
+                                            class="img-fluid rounded-top" src="{{ product.images.first.image.url }}"
                                             {% else %}
                                             class="img-fluid rounded-top" src="{% static 'apps/assets/img/products/1-2.jpg' %}"
                                             {% endif %}

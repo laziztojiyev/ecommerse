@@ -49,7 +49,6 @@ class ProductDetailView(DetailView):
 
 
 class WishlistView(View):
-
     def get(self, request, *args, **kwargs):
         wishlist, created = Wishlist.objects.get_or_create(user=request.user, product_id=kwargs['product_id'])
         if not created:

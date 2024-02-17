@@ -7,8 +7,3 @@ class UserSettingsForm(ModelForm):
     class Meta:
         model = CustomUser
         fields = ('first_name', 'last_name', 'password', 'about_me', 'phone_number', 'email')
-
-
-
-
-
