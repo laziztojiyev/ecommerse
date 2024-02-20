@@ -1,11 +1,11 @@
-from audioop import reverse
+
 
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.shortcuts import render
 from django.views import View
 from django.views.generic import ListView, DetailView, CreateView, DeleteView, FormView, TemplateView
 from django.shortcuts import redirect
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 
 from apps.forms import OrderModelForm
 from apps.models import Product, Wishlist, ProductImage
@@ -68,4 +68,11 @@ class OrderView(FormView):
         return redirect(reverse('product_detail', kwargs={'pk': self.request.POST.get('product_id')}))
 
     def get_success_url(self):
-        return reverse('product_detail', kwargs={'pk': self.request.POST.get('product_id')})
+        return reverse('product_detail', kwargs={'pk': self.request.POST.get('product')})
+        # return reverse('product_detail', kwargs={'pk': self.request.POST.get('product')})
+
+
+class OrderedView(TemplateView):
+    template_name = 'apps/ordered.html'
+
+

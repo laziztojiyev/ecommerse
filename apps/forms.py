@@ -44,7 +44,6 @@ class UserRegistrationForm(ModelForm):
 
 
 class OrderModelForm(ModelForm):
-
     class Meta:
         model = Order
         fields = ('name', 'phone_number', 'product')

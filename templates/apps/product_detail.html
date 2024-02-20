@@ -592,7 +592,7 @@
                             </div>
                         </div>
                     </div>
-                          <div class="col-lg-8 swiper-container">
+          <div class="col-lg-8 swiper-container">
             
             <form method="post" action="{% url 'order' %}">
                 {% csrf_token %}
@@ -600,53 +600,13 @@
                     <label class="form-label" for="formGroupNameInput">Ism:</label>
                     <input class="form-control" name="name" id="formGroupNameInput" type="text">
                 </div>
-                <!-- <div class="mb-2">
-                                        <label class="form-label" for="formGroupEmailInput">Telefon nomer:</label>
-                                        <input class="form-control" id="formGroupEmailInput" type="email" />
-                                    </div> -->
-                <!-- <div class="mb-2">
-                                        <label class="form-label">Manzil:</label>
-                                        <select class="form-select" name="location" aria-label="Default select example">
-                                            <option selected="">Tanlash</option>
-                                            <option value="tashkent">Toshkent shahar</option>
-                                            <option value="andijon">Andijon viloyati</option>
-                                            <option value="buxoro">Buxoro viloyati</option>
-                                            <option value="fargona">Fargʻona viloyati</option>
-                                            <option value="jizzax">Jizzax viloyati</option>
-                                            <option value="namangan">Namangan viloyati</option>
-                                            <option value="navoiy">Navoiy viloyati</option>
-                                            <option value="qashqadaryo">Qashqadaryo viloyati</option>
-                                            <option value="qoraqalpogiston">Qoraqalpogʻiston viloyati</option>
-                                            <option value="samarqand">Samarqand viloyati</option>
-                                            <option value="sirdaryo">Sirdaryo viloyati</option>
-                                            <option value="surxondaryo">Surxondaryo viloyati</option>
-                                            <option value="toshkent">Toshkent viloyati</option>
-                                            <option value="xorazm">Xorazm viloyati</option>
-                                        </select>
-                                    </div> -->
                 <div class="mb-4">
                     <label class="form-label" for="formGroupEmailInput">Telefon nomer:</label>
                     <input class="form-control" id="phone-mask" required="" name="phone_number" type="text">
                 </div>
                 <input class="form-control" name="product" type="text" value="{{ product.id }}" hidden>
-                <!-- <div class="mb-4">
-                                        <label class="form-label">Soni:</label>
-                                        <select name="quantity" class="form-select" aria-label="Default select example">
-                                            <option selected="">Tanlash</option>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                            <option value="6">6</option>
-                                            <option value="7">7</option>
-                                            <option value="8">8</option>
-                                            <option value="9">9</option>
-                                            <option value="10">10</option>
-                                        </select>
-                                    </div> -->
                 <span style="padding-bottom: 100px;">
-                    O'zbekiston bo'ylab yetkazib berish xizmatimiz 30000 so'm.
+                    Ma`lumotlarni to`ldirganingizdan so`ng 5-10 daqiqa ichida bizning hodimlarimiz siz bilan bog`lanadi
                 </span>
                 <div class="d-grid gap-2 col-6 mx-auto" style="margin-top: 20px;">
                     <button class="btn btn-primary" type="submit">Buyurtma berish</button>
@@ -654,18 +614,6 @@
             </form>
         </div>
                 </div>
-{#                <footer class="footer">#}
-{#                    <div class="row g-0 justify-content-between fs--1 mt-4 mb-3">#}
-{#                        <div class="col-12 col-sm-auto text-center">#}
-{#                            <p class="mb-0 text-600">Thank you for creating with Falcon <span#}
-{#                                    class="d-none d-sm-inline-block">| </span><br class="d-sm-none"/> 2021 &copy; <a#}
-{#                                    href="https://themewagon.com">Themewagon</a></p>#}
-{#                        </div>#}
-{#                        <div class="col-12 col-sm-auto text-center">#}
-{#                            <p class="mb-0 text-600">v3.4.0</p>#}
-{#                        </div>#}
-{#                    </div>#}
-{#                </footer>#}
             </div>
 
 {% endblock %}
