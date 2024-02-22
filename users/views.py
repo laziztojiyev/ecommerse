@@ -2,7 +2,7 @@ from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import PasswordChangeView
 from django.urls import reverse_lazy
-from django.views.generic import FormView, UpdateView, TemplateView
+from django.views.generic import FormView, UpdateView, TemplateView, ListView
 
 from apps.forms import UserRegistrationForm
 from users.models import CustomUser
@@ -41,3 +41,9 @@ class ChangePasswordView(PasswordChangeView):
 
     def form_invalid(self, form):
         return super().form_invalid(form)
+
+
+class LogoutView(ListView):
+    model = CustomUser
+    template_name = 'auth/logout.html'
+    context_object_name = 'logout'

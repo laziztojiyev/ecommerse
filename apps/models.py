@@ -129,6 +129,7 @@ class Order(BaseModel):
     name = CharField(max_length=255)
     phone_number = CharField(max_length=20)
     product = ForeignKey('apps.Product', CASCADE)
+    quantity = PositiveIntegerField(default=1)
 
     class Meta:
         verbose_name = 'buyurtma'

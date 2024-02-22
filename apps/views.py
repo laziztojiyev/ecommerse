@@ -8,7 +8,7 @@ from django.shortcuts import redirect
 from django.urls import reverse_lazy, reverse
 
 from apps.forms import OrderModelForm
-from apps.models import Product, Wishlist, ProductImage
+from apps.models import Product, Wishlist, ProductImage, Order
 
 
 # Create your views here.
@@ -68,11 +68,28 @@ class OrderView(FormView):
         return redirect(reverse('product_detail', kwargs={'pk': self.request.POST.get('product_id')}))
 
     def get_success_url(self):
-        return reverse('product_detail', kwargs={'pk': self.request.POST.get('product')})
+        return reverse('ordered', kwargs={'pk': self.request.POST.get('product')})
         # return reverse('product_detail', kwargs={'pk': self.request.POST.get('product')})
 
 
 class OrderedView(TemplateView):
     template_name = 'apps/ordered.html'
+
+
+class DeleteOrderedView(DeleteView):
+    model = Order
+    success_url = reverse_lazy('product_detail')
+    template_name = 'apps/ordered.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        order_id = self.kwargs.get('pk')
+        # You can now use the order_id variable to access the current order ID
+        context['order_id'] = order_id
+        return context
+
+
+
+
 
 
