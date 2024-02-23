@@ -85,7 +85,7 @@
                 </div>
                 <a class="navbar-brand" href="index.html">
                     <div class="d-flex align-items-center py-3"><img class="me-2"
-                                                                     src="{% static 'assets/img/icons/spot-illustrations/falcon.png' %}"
+                                                                     src="{% static 'apps/assets/img/icons/spot-illustrations/falcon.png' %}"
                                                                      alt="" width="40"/><span class="font-sans-serif">falcon</span>
                     </div>
                 </a>
@@ -327,7 +327,7 @@ app/events/event-detail.html
                                 </a>
                                     <!-- more inner pages-->
                                 </li>
-                                <li class="nav-item"><a class="nav-link" href="{% static 'app/e-commerce/shopping-cart.html' %}"
+                                <li class="nav-item"><a class="nav-link" href="{% url 'wishlist_list' %}"
                                                         aria-expanded="false">
                                     <div class="d-flex align-items-center"><span class="nav-link-text ps-1">Shopping cart</span>
                                     </div>
@@ -2139,7 +2139,7 @@ app/events/event-detail.html
                         </li>
                         <li class="nav-item">
                             <a class="nav-link px-0 notification-indicator notification-indicator-warning notification-indicator-fill fa-icon-wait"
-                               href="app/e-commerce/shopping-cart.html"><span class="fas fa-shopping-cart"
+                               href="{% url 'wishlist_list' %}"><span class="fas fa-shopping-cart"
                                                                               data-fa-transform="shrink-7"
                                                                               style="font-size: 33px;"></span><span
                                     class="notification-indicator-number">1</span></a>

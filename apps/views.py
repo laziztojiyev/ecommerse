@@ -1,11 +1,8 @@
-
-
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
-from django.shortcuts import render
-from django.views import View
-from django.views.generic import ListView, DetailView, CreateView, DeleteView, FormView, TemplateView
 from django.shortcuts import redirect
-from django.urls import reverse_lazy, reverse
+from django.urls import reverse
+from django.views import View
+from django.views.generic import ListView, DetailView, FormView, TemplateView
 
 from apps.forms import OrderModelForm
 from apps.models import Product, Wishlist, ProductImage, Order
@@ -68,27 +65,19 @@ class OrderView(FormView):
         return redirect(reverse('product_detail', kwargs={'pk': self.request.POST.get('product')}))
 
 
-
 class OrderedView(DetailView):
     template_name = 'apps/ordered.html'
     model = Order
     context_object_name = 'order'
 
 
-class DeleteOrderedView(DeleteView):
-    model = Order
-    success_url = reverse_lazy('product_detail')
-    template_name = 'apps/ordered.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        order_id = self.kwargs.get('pk')
-        # You can now use the order_id variable to access the current order ID
-        context['order_id'] = order_id
-        return context
+class WishlistShowView(ListView):
+    model = Wishlist
+    template_name = 'apps/wishlist_list.html'
+    context_object_name = 'wishlists'
 
 
-
-
-
-
+class WishlistRemoveView(View):
+    def get(self, request, product_id):
+        Wishlist.objects.filter(product_id=product_id, user_id=self.request.user.id).delete()
+        return redirect(reverse('wishlist_list'))
