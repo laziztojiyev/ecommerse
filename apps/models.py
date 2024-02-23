@@ -147,5 +147,8 @@ class SiteSettings(BaseModel):
         verbose_name = 'Sahifa sozlamasi'
         verbose_name_plural = 'Sahifa sozlamalari'
 
+    def __str__(self):
+        return f'yetkazib berish - {self.shipping_change}'
+
 
 
