@@ -61,19 +61,18 @@ class OrderView(FormView):
     template_name = 'apps/product_detail.html'
 
     def form_valid(self, form):
-        form.save()
-        return super().form_valid(form)
+        obj = form.save()
+        return redirect(reverse('ordered', kwargs={'pk': obj.pk}))
 
     def form_invalid(self, form):
-        return redirect(reverse('product_detail', kwargs={'pk': self.request.POST.get('product_id')}))
-
-    def get_success_url(self):
-        return reverse('ordered', kwargs={'pk': self.request.POST.get('product')})
-        # return reverse('product_detail', kwargs={'pk': self.request.POST.get('product')})
+        return redirect(reverse('product_detail', kwargs={'pk': self.request.POST.get('product')}))
 
 
-class OrderedView(TemplateView):
+
+class OrderedView(DetailView):
     template_name = 'apps/ordered.html'
+    model = Order
+    context_object_name = 'order'
 
 
 class DeleteOrderedView(DeleteView):

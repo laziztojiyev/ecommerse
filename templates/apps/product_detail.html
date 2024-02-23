@@ -596,6 +596,10 @@
             
             <form method="post" action="{% url 'order' %}">
                 {% csrf_token %}
+                    <div class="mb-4">
+                    <label class="form-label" for="FormGroupNameInput">Soni</label>
+                    <input class="form-control" id="phone-mask" required="" name="quantity" type="number">
+                </div>
                 <div class="mb-2">
                     <label class="form-label" for="formGroupNameInput">Ism:</label>
                     <input class="form-control" name="name" id="formGroupNameInput" type="text">

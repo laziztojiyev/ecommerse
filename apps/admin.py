@@ -3,7 +3,7 @@ from django.contrib.admin import StackedInline
 from django.utils.safestring import mark_safe
 
 from apps.forms import ProductModelForm
-from apps.models import Category, Product, Wishlist, Cart, ProductImage
+from apps.models import Category, Product, Wishlist, Cart, ProductImage, SiteSettings
 
 
 # Register your models here.
@@ -21,7 +21,7 @@ class ProductImagesStackedInline(StackedInline):
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    inlines = (ProductImagesStackedInline, )
+    inlines = (ProductImagesStackedInline,)
     list_display = ['name', 'quantity', 'image_show', 'category']
     form = ProductModelForm
     list_per_page = 10
@@ -51,4 +51,9 @@ class WishlistAdmin(admin.ModelAdmin):
 
 @admin.register(Cart)
 class CartAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(SiteSettings)
+class SiteSettingsAdmin(admin.ModelAdmin):
     pass

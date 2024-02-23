@@ -112,6 +112,10 @@ class Product(BaseModel):
     def is_new(self):
         return self.created_at >= now() - timedelta(days=2)
 
+    @property
+    def add_shipping(self):
+        return self.sell_price + 30000
+
 
 class ProductImage(models.Model):
     image = ResizedImageField(size=[1098, 717], upload_to='images/products', null=True, blank=True)
@@ -134,3 +138,14 @@ class Order(BaseModel):
     class Meta:
         verbose_name = 'buyurtma'
         verbose_name_plural = 'buyurtmalar'
+
+
+class SiteSettings(BaseModel):
+    shipping_change = PositiveIntegerField()
+
+    class Meta:
+        verbose_name = 'Sahifa sozlamasi'
+        verbose_name_plural = 'Sahifa sozlamalari'
+
+
+
