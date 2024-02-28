@@ -1,11 +1,10 @@
-from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.shortcuts import redirect
 from django.urls import reverse
 from django.views import View
 from django.views.generic import ListView, DetailView, FormView, TemplateView
 
 from apps.forms import OrderModelForm
-from apps.models import Product, Wishlist, ProductImage, Order
+from apps.models import Product, Wishlist, ProductImage, Order, Category
 
 
 # Create your views here.
@@ -15,21 +14,9 @@ class ProductListView(ListView):
     context_object_name = 'products'
     paginate_by = 9
 
-    def get_queryset(self):
-        return Product.objects.all()
-
-    def get_context_data(self, **kwargs):
+    def get_context_data(self, *, object_list=None, **kwargs):
         contex = super().get_context_data(**kwargs)
-        paginator = Paginator(self.get_queryset(), self.paginate_by)
-        page = self.request.GET.get('page')
-
-        try:
-            product_list_p = paginator.page(page)
-        except PageNotAnInteger:
-            product_list_p = paginator.page(1)
-        except EmptyPage:
-            product_list_p = paginator.page(paginator.num_pages)
-        contex['product_list'] = product_list_p
+        contex['categories'] = Category.objects.all()
         return contex
 
 

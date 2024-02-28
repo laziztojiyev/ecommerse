@@ -139,6 +139,14 @@ class Order(BaseModel):
         verbose_name = 'buyurtma'
         verbose_name_plural = 'buyurtmalar'
 
+    @property
+    def remove_quantity(self):
+        if self.product.quantity >= self.quantity:
+            self.product.quantity -= self.quantity
+            return self.quantity
+        else:
+            return f'omborda {self.product.quantity} ta mahsulot bor'
+
 
 class SiteSettings(BaseModel):
     shipping_change = PositiveIntegerField()
@@ -149,6 +157,3 @@ class SiteSettings(BaseModel):
 
     def __str__(self):
         return f'yetkazib berish - {self.shipping_change}'
-
-
-

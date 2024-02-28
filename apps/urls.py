@@ -10,5 +10,5 @@ urlpatterns = [
     path('order', OrderView.as_view(), name='order'),
     path('ordered/<int:pk>', OrderedView.as_view(), name='ordered'),
     path('liking', WishlistShowView.as_view(), name='wishlist_list'),
-    path('liking/delete/<int:product_id>', WishlistRemoveView.as_view(), name='deleting_wishlist')
+    path('liking/delete/<int:product_id>', WishlistRemoveView.as_view(), name='deleting_wishlist'),
 ]

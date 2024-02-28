@@ -18,6 +18,6 @@ urlpatterns = [
     path('settings/', ProfileLoginView.as_view(), name='profile'),
     path('settings/update/', UserUpdateView.as_view(), name='user_update'),
     path('settings/update_password/', ChangePasswordView.as_view(), name='change_password'),
-    path('logout/', LogoutView.as_view(), name='logout')
+    path('logout/', LogoutView.as_view(), name='logout'),
 ]
 
